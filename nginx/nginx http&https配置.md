@@ -45,7 +45,7 @@ http {
    server {
          listen       443 ssl http2 default_server;
          listen       [::]:443 ssl http2 default_server;
-         server_name  m.test.com;
+         server_name  m.xxx.com;
          root         /service;
  
          ssl_certificate "/etc/nginx/cert/214744744310771.pem";         //  证书目录
@@ -75,4 +75,4 @@ http {
 
 > 3.查看结果 
 
-浏览器查看 https://m.test.com
+浏览器查看 https://m.xxx.com

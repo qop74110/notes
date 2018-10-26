@@ -12,5 +12,5 @@ git reset –hard id
 
 > 撤销，但是不对代码修改
 ```git
-git reset id
+git reset HEAD^
 ```
