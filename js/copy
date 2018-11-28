@@ -10,7 +10,7 @@ npm install clipboard –save
 ```
 
 > js
-```javascript 1.8
+```
     import Clipboard from 'clipboard'
     new ClipboardJS('#copy');
 ```
