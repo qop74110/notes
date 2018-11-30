@@ -1,0 +1,53 @@
+# 快应用环境搭建 & 目录主要结构
+
+1. IDE搭建
+2. 命令行搭建
+
+### 1. IDE搭建
+
+首先你拥有以下几种方式去新建一个快应用工程
+> 按钮栏的 + 号 </br>
+>【文件】→【创建快应用工程】</br>
+
+最终会打开一个创建快应用工程页面 , 如下图所示
+![image](./img/createProject.png)
+
+接着按页面提示操作，选择路径，指定工程存放的目录，输入项目名称和 rpk 包名，rpk 包名格式如："org.xxx.demo / com.xxx.demo"。
+
+选择创建工程的类型，目前版本仅支持 创建快应用工程
+
+点击完成，一个崭新的 IDE 工程就这样完成了。
+
+### 2. 命令行搭建
+
+> 创建项目前，请先安装 toolkit 工具和调试器。如未安装，详见文档[环境搭建](https://doc.quickapp.cn/tutorial/getting-started/build-environment.html)
+
+安装 toolkit 工具后，可通过全局hap命令创建一个项目模板，如下所示:
+
+```
+hap init <ProjectName>
+
+// 安装依赖
+
+npm install
+```
+
+# 目录主要结构
+```
+├── sign                      rpk包签名模块
+│   └── debug                 调试环境
+│       ├── certificate.pem   证书文件
+│       └── private.pem       私钥文件
+├── src
+│   ├── Common                公用的资源和组件文件
+│   │   └── logo.png          应用图标
+│   ├── Demo                  页面目录
+│   |   └── index.ux          页面文件，可自定义页面名称
+│   ├── app.ux                APP文件，可引入公共脚本，暴露公共数据和方法等
+│   └── manifest.json         项目配置文件，配置应用图标、页面路由等
+└── package.json              定义项目需要的各种模块及配置信息
+```
+
+
+# 预览效果
+![image](./img/readme.png)

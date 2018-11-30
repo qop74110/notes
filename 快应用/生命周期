@@ -1,0 +1,74 @@
+# 快应用的生命周期
+
+* 页面的生命周期：onInit、onReady、onShow、onHide、onDestroy、onBackPress、onMenuPress
+* 页面的状态：显示、隐藏、销毁
+* APP 的生命周期：onCreate、onDestroy
+
+### 1.页面的生命周期
+
+1. onInit()
+
+    ViewModel的数据已经准备好，可以开始使用页面中的数据
+
+2. onReady
+
+    ViewModel的模板已经编译完成，可以开始获取 DOM 节点
+
+
+3. onShow
+
+    页面被切换隐藏时调用 onHide()，
+    
+    判断页面的显示状态，可以调用ViewModel的$visible属性：true表示显示，false表示隐藏
+
+4. onHide
+
+    页面被切换重新显示时调用 onShow()
+
+5. onDestroy
+
+    页面被销毁时调用，被销毁的可能原因有：用户从当前页面返回到上一页，或者用户打开了太多的页面，框架自动销毁掉部分页面，避免占用资源
+    
+    所以，页面销毁时应该做一些释放资源的操作，如：取消接口订阅监听geolocation.unsubscribe()
+    
+    判断页面是否处于被销毁状态，可以调用ViewModel的$valid属性：true表示存在，false表示销毁
+
+6. onBackPress
+
+    当用户点击返回实体按键、左上角返回菜单、调用返回API时触发该事件
+    
+    如果事件响应方法最后返回true表示不返回
+    
+    ```
+        onBackPress () {
+          console.info(`触发：onBackPress`)
+        
+          // true：表示自己处理；否则默认返回上一页
+          // return true
+        }
+    ```
+
+7. onMenuPress
+
+    当使用原生的顶部标题栏时，可以通过manifest.json中的menu属性配置是否显示右上角的菜单
+    
+
+### 页面的状态
+
+如上所述，APP 中允许多个页面同时存在并运行，但当前仅显示其中一个，因此每个页面就会处于多个状态的一个状态
+
+    显示：该页面就是当前 APP 正在显示的页面，用$visible判断
+    隐藏：该页面上打开新页面后，该页面被隐藏，用$visible判断
+    销毁：该页面因某原因销毁后，就不会再执行里面的代码，用$valid判断
+    
+    
+    
+### APP 的状态
+
+1. onCreate
+    
+    创建
+
+2. onDestroy
+
+    销毁
