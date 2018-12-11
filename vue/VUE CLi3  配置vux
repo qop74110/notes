@@ -1,0 +1,54 @@
+# VUE CLi3  配置 vux
+
+vue-cli更新到3.x，改动很大我常用的移动端UI库vux并不能按照vue-cli2那样配置，通过查看文档和资料终于完成
+
+### 一、安装@vue/cli3 
+
+[自己看文档吧](https://cli.vuejs.org/zh/guide/installation.html)
+
+### 二、创建项目
+
+[自己看文档吧](https://cli.vuejs.org/zh/guide/creating-a-project.html)
+
+### 三、在项目里面安装vux
+
+```
+    npm install vux --save
+    
+    npm install vux-loader --save-dev      // 必须安装
+```
+
+### 四、配置vux环境
+
+>注意vue-cli3使用的是webpack4，更新过vue-loader，所以vux使用起来会存在一些兼容的问题，这里需要额外配置一下。
+
+>官方更新过vue/cli3.x 的vue-loader，正常配置会导致加载错误。所以需要手动指定vue-loader的版本来解决加载问题。
+
+```
+    npm install vue-loader@14.2.2 -D
+
+```
+
+
+### 五、配置vue.config.js
+
+vue.config.js 配置参考 [传送门](https://cli.vuejs.org/zh/config/)
+
+> vue-cli3.x的一些服务配置整个的结构都迁移到CLI Service里面了
+
+```
+    module.exports = {
+        configureWebpack: config => {
+            require('vux-loader').merge(config, {
+                options: {},
+                plugins: ['vux-ui']
+            })
+        }
+    }
+```
+
+### 六、重启项目
+
+```
+    npm run serve
+```
